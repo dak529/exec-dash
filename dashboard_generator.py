@@ -18,7 +18,6 @@ while True:
     else:
         print("Apologies, this file does not exist. Please enter another selection.")
 
-
 # USD Formatting Function
 
 def to_usd(my_price):
@@ -34,6 +33,7 @@ csv_data = pd.read_csv(url)
 monthly_total = csv_data["sales price"].sum()
 
 #Top Sellers List
+#https://codereview.stackexchange.com/questions/65031/creating-a-list-containing-the-rank-of-the-elements-in-the-original-list
 
 product_totals = csv_data.groupby(["product"]).sum()
 
@@ -67,6 +67,8 @@ print("-----------------------")
 print("VISUALIZING THE DATA...")
 
 #Data Visualization
+#https://matplotlib.org/3.1.1/gallery/lines_bars_and_markers/barh.html
+#https://stackoverflow.com/questions/9626298/matplotlib-chart-creating-horizontal-bar-chart
 
 # Graph definitions w/ matplotlib
 products = list(product_totals.index)
@@ -74,8 +76,8 @@ sales = list(round(product_totals['sales price'],2))
 y_pos = np.arange(len(products))
 x_lab = [f"${x:,.2f}" for x in range(0, (round(math.ceil(sales[0] / 1000)) * 1000) + 1000, 1000)]
 
+#Graph Build
 
-#Visualization, horizontal bar graph build
 fig, ax = plt.subplots()
 
 ax.barh(y_pos, sales, xerr=0, align='center')
