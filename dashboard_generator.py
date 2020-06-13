@@ -58,5 +58,9 @@ print("TOP SELLING PRODUCTS:")
 
 #enter top products code generating list here
 
+for x in top_products:
+    print("  " + str(x["rank"]) + ") " + x["name"] +
+          ": " + to_usd(x["monthly_sales"]))
+
 print("-----------------------")
 print("VISUALIZING THE DATA...")
