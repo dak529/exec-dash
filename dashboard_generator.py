@@ -77,6 +77,7 @@ y_pos = np.arange(len(products))
 x_lab = [f"${x:,.2f}" for x in range(0, (round(math.ceil(sales[0] / 1000)) * 1000) + 1000, 1000)]
 
 #Graph Build
+#https://365datascience.com/bar-chart-python-matplotlib/
 
 fig, ax = plt.subplots()
 
