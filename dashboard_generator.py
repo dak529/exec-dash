@@ -46,7 +46,7 @@ for i, row in product_totals.iterrows():
     top_products.append(x)
     rank = rank + 1
 
-    #Sales Info Output
+#Sales Info Output
 
 print("-----------------------")
 print("CRUNCHING THE DATA...")
