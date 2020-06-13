@@ -44,3 +44,19 @@ for i, row in product_totals.iterrows():
     x = {"rank": rank, "name": row.name, "monthly_sales": row["sales price"]}
     top_products.append(x)
     rank = rank + 1
+
+    #Sales Info Output
+
+print("-----------------------")
+print("CRUNCHING THE DATA...")
+
+print("-----------------------")
+print(f"TOTAL MONTHLY SALES: {to_usd(monthly_total)}")
+
+print("-----------------------")
+print("TOP SELLING PRODUCTS:")
+
+#enter top products code generating list here
+
+print("-----------------------")
+print("VISUALIZING THE DATA...")
