@@ -28,3 +28,6 @@ url = 'https://raw.githubusercontent.com/prof-rossetti/intro-to-python/master/da
 csv_filename = file_name
 csv_data = pd.read_csv(url)
 
+# Monthly Sales Total
+
+monthly_total = csv_data["sales price"].sum()
