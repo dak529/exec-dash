@@ -85,4 +85,12 @@ ax.set_xlabel('In-the-Month Sales (USD)', fontweight = 'bold')
 ax.set_ylabel('Products', fontweight = 'bold')
 ax.set_title('Top Selling Products (March 2019)', fontweight = 'bold')
 
+for i, monthly_sales in enumerate(sales):
+    if monthly_sales > 1000:
+        val = f"${monthly_sales:,.2f}"
+        ax.text(monthly_sales - 400, i + .1, val, color = 'white', fontweight = 'bold')
+    else:
+        val = f"${monthly_sales:,.2f}"
+        ax.text(monthly_sales + 3, i + .1, val, color = 'black', fontweight = 'bold')
+
 plt.show()
