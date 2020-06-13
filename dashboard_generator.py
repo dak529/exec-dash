@@ -80,7 +80,7 @@ x_lab = [f"${x:,.2f}" for x in range(0, (round(math.ceil(sales[0] / 1000)) * 100
 
 fig, ax = plt.subplots()
 
-ax.barh(y_pos, sales, xerr=0, align='center')
+ax.barh(y_pos, sales, xerr=0, align='center', color = 'midnightblue')
 ax.set_yticks(y_pos)
 ax.set_yticklabels(products)
 ax.invert_yaxis()  # labels read top-to-bottom
