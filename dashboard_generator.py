@@ -31,3 +31,16 @@ csv_data = pd.read_csv(url)
 # Monthly Sales Total
 
 monthly_total = csv_data["sales price"].sum()
+
+#Top Sellers List
+
+product_totals = csv_data.groupby(["product"]).sum()
+
+product_totals = product_totals.sort_values("sales price", ascending=False)
+
+top_products = []
+rank = 1
+for i, row in product_totals.iterrows():
+    x = {"rank": rank, "name": row.name, "monthly_sales": row["sales price"]}
+    top_products.append(x)
+    rank = rank + 1
