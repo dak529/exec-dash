@@ -2,26 +2,27 @@
 
 # URL is for input file "sales-201903.csv"
 
+import math
 import os
+import re
+from datetime import datetime
+
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import math
-import re
-from datetime import datetime
-from os import listdir
-from os.path import isfile, join
 
 #Referencing csv file hub
-data_location = os.path.join(os.path.dirname(__file__), "..", "data")
+data_location = os.path.join(os.path.dirname(__file__), "data")
+
+from os import listdir
+from os.path import isfile, join
 
 files = [f for f in listdir(data_location) if isfile(join(data_location, f))]
 
 #File selection process
 while True:
     file_name = input("Please input file name: ")
-    
     if [p for p in files if p == file_name]:
         break
     else:
@@ -39,7 +40,7 @@ formatted_date = report_date.strftime("%B %Y")
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)  # > $12,000.71
 
-csv_filepath = os.path.join(os.path.dirname(__file__), "..", "data", str(file_name))
+csv_filepath = os.path.join(os.path.dirname(__file__), "data", str(file_name))
 
 csv_filename = file_name
 csv_data = pd.read_csv(csv_filepath)
@@ -66,6 +67,9 @@ for i, row in product_totals.iterrows():
 
 print("-----------------------")
 print("CRUNCHING THE DATA...")
+
+print("-----------------------")
+print("MONTH: " + str(formatted_date))
 
 print("-----------------------")
 print(f"TOTAL MONTHLY SALES: {to_usd(monthly_total)}")
@@ -103,12 +107,12 @@ ax.set_yticklabels(products)
 ax.invert_yaxis()  # labels read top-to-bottom
 ax.set_xlabel('In-the-Month Sales (USD)', fontweight = 'bold')
 ax.set_ylabel('Products', fontweight = 'bold')
-ax.set_title('Top Selling Products (March 2019)', fontweight = 'bold')
+ax.set_title('Top-Selling Products ' + '(' + str(formatted_date) + ')', fontweight = 'bold')
 
 for i, monthly_sales in enumerate(sales):
     if monthly_sales > 1000:
         val = f"${monthly_sales:,.2f}"
-        ax.text(monthly_sales - 400, i + .1, val, color = 'white', fontweight = 'bold')
+        ax.text(monthly_sales - 600, i + .1, val, color = 'white', fontweight = 'bold')
     else:
         val = f"${monthly_sales:,.2f}"
         ax.text(monthly_sales + 3, i + .1, val, color = 'black', fontweight = 'bold')
