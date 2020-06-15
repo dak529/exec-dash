@@ -13,10 +13,12 @@ from datetime import datetime
 from os import listdir
 from os.path import isfile, join
 
+#Referencing csv file hub
 data_location = os.path.join(os.path.dirname(__file__), "..", "data")
 
 files = [f for f in listdir(data_location) if isfile(join(data_location, f))]
 
+#File selection process
 while True:
     file_name = input("Please input file name: ")
     
