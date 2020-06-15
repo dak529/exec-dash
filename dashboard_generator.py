@@ -8,25 +8,39 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import math
+import re
+from datetime import datetime
+from os import listdir
+from os.path import isfile, join
 
+data_location = os.path.join(os.path.dirname(__file__), "..", "data")
+
+files = [f for f in listdir(data_location) if isfile(join(data_location, f))]
 
 while True:
     file_name = input("Please input file name: ")
     
-    if file_name == "sales-201903.csv":
+    if [p for p in files if p == file_name]:
         break
     else:
         print("Apologies, this file does not exist. Please enter another selection.")
+
+parts = re.split('-|\.',file_name)
+str_date = parts[1]
+
+#Printing Formatted Date
+report_date = datetime.strptime(str_date, "%Y%m")
+formatted_date = report_date.strftime("%B %Y")
 
 # USD Formatting Function
 
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)  # > $12,000.71
 
-url = 'https://raw.githubusercontent.com/prof-rossetti/intro-to-python/master/data/monthly-sales/sales-201903.csv'
+csv_filepath = os.path.join(os.path.dirname(__file__), "..", "data", str(file_name))
 
 csv_filename = file_name
-csv_data = pd.read_csv(url)
+csv_data = pd.read_csv(csv_filepath)
 
 # Monthly Sales Total
 
