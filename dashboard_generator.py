@@ -1,7 +1,5 @@
 # dashboard_generator.py
 
-# URL is for input file "sales-201903.csv"
-
 import math
 import os
 import re
